@@ -1,9 +1,9 @@
 const express = require('express')
 const  app = express() 
 
-const herois = ["homen aranha", "hulk", "ms. marvel"]
+const herois = ["homem aranha", "hulk", "ms. marvel"]
 
-//ENDPOINT Listagem de todos os herois (READ ALL => [GET])  
+//ENDPOINT Listagem de todos os herois (READ Single => [GET])  
 app.get("/heroes", function(req, res){
     res.send(herois)
 })  
@@ -17,6 +17,14 @@ app.get("/heroes/:id", function(req, res){
     
 
     res.send(umheroi)
+}) 
+
+//todo o corpo da requisição virá como JSON
+app .use(express.json())
+
+// ENPOINT de criação (CREATE => [POST])
+app.post("/heroes", function(req, res ){
+    res.send(req.body)
 })
 
 app.listen(3000) 
